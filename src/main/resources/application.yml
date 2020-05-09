@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    open-in-view: false
+  http:
+    encoding:
+      enabled: true
+      charset: UTF-8
+      force: true
+
+logging:
+  level:
+    root: info
