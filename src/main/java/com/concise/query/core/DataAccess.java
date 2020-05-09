@@ -10,7 +10,4 @@ public interface DataAccess<E, I, Q> {
 
     E get(I id);
 
-//    default PageList<E> page(Q query) {
-//        return new PageList<>(query(query), count(query));
-//    }
 }
