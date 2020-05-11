@@ -1,10 +1,9 @@
 package com.concise.query.core.user;
 
+import com.concise.query.entity.IntegerId;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 
@@ -12,12 +11,9 @@ import javax.persistence.Table;
 @Setter
 //@Entity
 @Table(name = UserEntity.TABLE)
-public class UserEntity {
+public class UserEntity extends IntegerId {
     public static final String TABLE = "user";
 
-    @Id
-    @GeneratedValue
-    protected Integer id;
     private String username;
     private String password;
     private String mobile;
