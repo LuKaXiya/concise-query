@@ -11,13 +11,14 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "user")
+@Table(name = UserEntity.TABLE)
 public class UserEntity {
+
+    public static final String TABLE = "user";
 
     @Id
     @GeneratedValue
     protected Integer id;
-
     private String username;
     private String password;
     private String mobile;

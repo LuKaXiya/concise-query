@@ -10,7 +10,7 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@QueryTable(table = "user",entityClass = UserEntity.class)
+@QueryTable(table = UserEntity.TABLE, entityClass = UserEntity.class)
 public class UserQuery extends PageQuery {
     private String username;
 

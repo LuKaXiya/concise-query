@@ -54,7 +54,7 @@
     </environments>
 
     <mappers>
-        <mapper class="com.concise.query.core.user.UserMapper"/>
+        <mapper class="com.concise.query.core.user.MenuMapper"/>
     </mappers>
 
 </configuration>
