@@ -14,3 +14,7 @@ spring:
 logging:
   level:
     root: info
+    com.concise.query: debug
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
