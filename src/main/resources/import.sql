@@ -3,4 +3,4 @@ INSERT INTO user (id, username, mobile, email, nickname, password, valid) VALUES
 INSERT INTO user (id, username, mobile, email, nickname, password, valid) VALUES (3, 'user3', '17778888883', 'test3@163.com', '测试3', '123456', true);
 INSERT INTO user (id, username, mobile, email, nickname, password, valid) VALUES (4, 'user4', '17778888884', 'test4@163.com', '测试4', '123456', true);
 
-INSERT INTO menu (id) VALUES (1);
+INSERT INTO menu (id,menuname) VALUES (1,"menu");

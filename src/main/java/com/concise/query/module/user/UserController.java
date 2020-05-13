@@ -2,9 +2,7 @@ package com.concise.query.module.user;
 
 import com.concise.query.core.PageList;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -31,4 +29,10 @@ public class UserController {
     public UserEntity get(Integer id) {
         return userService.get(id);
     }
+
+    @PostMapping("save")
+    public void save(@RequestBody UserRequest userRequest) {
+        userService.save(userRequest.toEntity());
+    }
+
 }
