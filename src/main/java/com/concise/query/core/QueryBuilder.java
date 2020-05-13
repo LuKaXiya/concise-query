@@ -68,25 +68,13 @@ public class QueryBuilder {
     private static String buildWhere(Object query, List<Object> argList) {
         LinkedList<Object> whereList = new LinkedList<>();
         for (Field field : query.getClass().getDeclaredFields()) {
-            Object value = readField(query, field);
-            if (value == null) {
+            if (field.getName().startsWith("$")) {
                 continue;
             }
-            QueryField queryField = field.getAnnotation(QueryField.class);
-            String andSQL;
-            if (queryField != null) {
-                andSQL = queryField.and();
-            } else {
-                andSQL = field.getName() + " = " + "#{" + field.getName() + "}";
+            Object value = readField(field, query);
+            if (value != null) {
+                processField(value, field, whereList, argList);
             }
-            if (argList != null) {
-                Matcher matcher = PLACE_HOLDER_PTN.matcher(andSQL);
-                while (matcher.find()) {
-                    argList.add(value);
-                }
-                andSQL = matcher.replaceAll("?");
-            }
-            whereList.add(andSQL);
         }
         String where = "";
         if (!whereList.isEmpty()) {
@@ -95,7 +83,27 @@ public class QueryBuilder {
         return where;
     }
 
-    private static Object readField(Object query, Field field) {
+    private static void processField(Object value, Field field, LinkedList<Object> whereList, List<Object> argList) {
+        QueryField queryField = field.getAnnotation(QueryField.class);
+        String andSQL;
+        if (queryField != null) {
+            andSQL = queryField.and();
+        } else {
+            andSQL = field.getName() + " = " + "#{" + field.getName() + "}";
+        }
+
+        if (argList != null) {
+            Matcher matcher = PLACE_HOLDER_PTN.matcher(andSQL);
+            while (matcher.find()) {
+                argList.add(value);
+            }
+            andSQL = matcher.replaceAll("?");
+        }
+        whereList.add(andSQL);
+    }
+
+
+    private static Object readField(Field field, Object query) {
         try {
             return FieldUtils.readField(field, query, true);
         } catch (IllegalAccessException e) {
