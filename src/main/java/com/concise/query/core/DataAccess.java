@@ -1,8 +1,9 @@
 package com.concise.query.core;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface DataAccess<E, I, Q> {
+public interface DataAccess<E, I extends Serializable, Q> {
 
     List<E> query(Q query);
 

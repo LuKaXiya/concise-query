@@ -4,10 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 
 import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.*;
 
 @Slf4j
@@ -82,13 +80,6 @@ public class CrudBuilder extends QueryBuilder {
             updateFields.add(resolveColumn(field) + " = " + ("#{" + field.getName() + "}"));
         }
         return StringUtils.join(updateFields, ", ");
-    }
-
-    private static boolean ignoreField(Field field) {
-        return field.getName().startsWith("$")          // $jacocoData
-                || Modifier.isStatic(field.getModifiers())  // static field
-                || field.isAnnotationPresent(Id.class)      // id
-                ;
     }
 
     public String create(Object entity) {

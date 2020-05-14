@@ -5,9 +5,10 @@ import com.concise.query.core.DataAccess;
 import com.concise.query.core.QueryBuilder;
 import org.apache.ibatis.annotations.*;
 
+import java.io.Serializable;
 import java.util.List;
 
-public interface CrudMapper<E, I, Q> extends DataAccess<E, I, Q> {
+public interface CrudMapper<E, I extends Serializable, Q> extends DataAccess<E, I, Q> {
 
     @SelectProvider(type = QueryBuilder.class, method = "buildSelect")
     List<E> query(Q query);

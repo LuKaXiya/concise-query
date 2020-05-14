@@ -1,7 +1,7 @@
 package com.concise.query.core.core;
 
 import com.concise.query.core.QueryBuilder;
-import com.concise.query.core.user.UserQuery;
+import com.concise.query.module.user.UserQuery;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;

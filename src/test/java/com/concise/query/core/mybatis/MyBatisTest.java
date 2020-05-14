@@ -1,9 +1,9 @@
 package com.concise.query.core.mybatis;
 
 
-import com.concise.query.core.user.UserEntity;
 import com.concise.query.core.user.UserMapper;
-import com.concise.query.core.user.UserQuery;
+import com.concise.query.module.user.UserEntity;
+import com.concise.query.module.user.UserQuery;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
