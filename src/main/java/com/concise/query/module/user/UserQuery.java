@@ -16,4 +16,12 @@ public class UserQuery extends PageQuery {
 
     @QueryField(and = "(username = #{account} OR email = #{account} OR mobile = #{account})")
     private String account;
+
+    private String mobile;
+
+    private String usernameLike;
+
+    public String getUsernameLike() {
+        return usernameLike == null ? null : "%" + usernameLike + "%";
+    }
 }
