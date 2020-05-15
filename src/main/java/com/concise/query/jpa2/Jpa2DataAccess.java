@@ -7,13 +7,11 @@ import com.concise.query.core.QueryService;
 import org.springframework.data.repository.CrudRepository;
 
 import javax.persistence.EntityManager;
-import javax.persistence.Parameter;
 import javax.persistence.Query;
 import java.io.Serializable;
 import java.math.BigInteger;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class Jpa2DataAccess<E, I extends Serializable, Q> implements DataAccess<E, I, Q> {
 
@@ -43,8 +41,6 @@ public class Jpa2DataAccess<E, I extends Serializable, Q> implements DataAccess<
         for (int i = 0; i < args.length; i++) {
             query.setParameter(i + 1, args[i]);
         }
-        Set<Parameter<?>> parameters = query.getParameters();
-        List resultList = query.getResultList();
         return query.getResultList();
     }
 

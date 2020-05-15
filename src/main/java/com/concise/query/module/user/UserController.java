@@ -22,7 +22,6 @@ public class UserController {
 
     @GetMapping("page")
     public PageList<UserResponse> page(UserQuery userQuery) {
-        PageList<UserResponse> page = userService.page(userQuery, UserResponse::of);
         return userService.page(userQuery, UserResponse::of);
     }
 
