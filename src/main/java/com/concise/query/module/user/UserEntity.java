@@ -1,7 +1,6 @@
 package com.concise.query.module.user;
 
 import com.concise.query.entity.IntegerId;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,7 +11,7 @@ import javax.persistence.Table;
 @Setter
 @Entity
 @Table(name = UserEntity.TABLE)
-@EqualsAndHashCode(callSuper = true)
+//@EqualsAndHashCode(callSuper = true)
 public class UserEntity extends IntegerId {
 
     public static final String TABLE = "user";
@@ -22,5 +21,5 @@ public class UserEntity extends IntegerId {
     private String mobile;
     private String email;
     private String nickname;
-    private Boolean valid;
+    private boolean valid;
 }

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService extends AbstractJpa2Service<UserEntity, Integer, UserQuery> {
 
-    public UserService(UserRepository crudRepository) {
-        super(crudRepository);
+    public UserService(UserRepository userRepository) {
+        super(userRepository);
     }
 }
