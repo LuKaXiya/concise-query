@@ -4,8 +4,11 @@ import com.concise.query.core.QueryBuilder;
 import com.concise.query.module.user.UserQuery;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
 import java.util.LinkedList;
+import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -91,6 +94,21 @@ public class QueryBuilderTest {
         UserQuery userQuery = UserQuery.builder().usernameLike("test").build();
         assertEquals("SELECT * FROM user WHERE username LIKE #{usernameLike}",
                 queryBuilder.buildSelect(userQuery));
+    }
+
+
+    @Test
+    public void supportInSuffix() {
+        List<Integer> ids = Arrays.asList(1, 2, 3);
+        UserQuery userQuery = UserQuery.builder().idIn(ids).build();
+        assertEquals("SELECT * FROM user WHERE id IN (#{idIn[0]}, #{idIn[1]}, #{idIn[2]})",
+                queryBuilder.buildSelect(userQuery));
+
+        LinkedList<Object> argList = new LinkedList<>();
+        assertEquals("SELECT * FROM user WHERE id IN (?, ?, ?)",
+                queryBuilder.buildSelectAndArgs(userQuery, argList));
+        assertThat(argList).containsExactly(1, 2, 3);
+
     }
 
 

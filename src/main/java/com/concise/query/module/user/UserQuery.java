@@ -5,6 +5,8 @@ import com.concise.query.annotation.QueryTable;
 import com.concise.query.core.PageQuery;
 import lombok.*;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Builder
@@ -12,6 +14,9 @@ import lombok.*;
 @AllArgsConstructor
 @QueryTable(table = UserEntity.TABLE, entityClass = UserEntity.class)
 public class UserQuery extends PageQuery {
+
+    private List<Integer> idIn;
+
     private String username;
 
     @QueryField(and = "(username = #{account} OR email = #{account} OR mobile = #{account})")
