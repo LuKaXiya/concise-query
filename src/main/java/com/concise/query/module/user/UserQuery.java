@@ -5,6 +5,7 @@ import com.concise.query.annotation.QueryTable;
 import com.concise.query.core.PageQuery;
 import lombok.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -16,6 +17,7 @@ import java.util.List;
 public class UserQuery extends PageQuery {
 
     private List<Integer> idIn;
+    private List<Integer> idNotIn;
 
     private String username;
 
@@ -25,6 +27,11 @@ public class UserQuery extends PageQuery {
     private String mobile;
 
     private String usernameLike;
+
+    private Date createTimeGt;
+    private Date createTimeGe;
+    private Date createTimeLt;
+    private Date createTimeLe;
 
     public String getUsernameLike() {
         return usernameLike == null ? null : "%" + usernameLike + "%";
